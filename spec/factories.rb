@@ -7,6 +7,5 @@ FactoryGirl.define do
 
   factory :answer do
     sequence(:content) {|n| "Answer #{n}"}
-    sequence(:score) { rand(10) }
   end
 end

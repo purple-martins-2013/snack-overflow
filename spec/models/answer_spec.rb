@@ -5,7 +5,6 @@ describe Answer do
 
   context "validations" do
     it { should validate_presence_of :content }
-    it { should validate_presence_of :score }
     it { should belong_to(:user) }
     it { should belong_to(:question) }
   end
@@ -16,5 +15,9 @@ describe Answer do
 
   context "score" do
     it { should respond_to :score }
+
+    it "should have the correct default value" do
+      test_answer.score.should eq 0
+    end
   end
 end
