@@ -9,8 +9,8 @@ describe Question do
     it { should belong_to :user }
   end
 
-  context "Belongs in Question" do
-    it "has a title" do
+  context "Attributes of a Question" do
+    it "has a the right title" do
       question.title.should eq "Want good food."
     end 
 
