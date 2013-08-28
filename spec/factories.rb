@@ -8,4 +8,9 @@ FactoryGirl.define do
   factory :answer do
     sequence(:content) {|n| "Answer #{n}"}
   end
+
+  factory :question do
+    sequence(:title) {|n| "Title #{n}"}
+    sequence(:content) {|n| "Content #{n}"}
+  end
 end
