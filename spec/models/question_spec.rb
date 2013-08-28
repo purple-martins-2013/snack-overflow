@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Question do
-  let(:question) { question = Question.new(title: "Want good food.", content: "I have raisins, celery and PB. What can I make?") }
+  let(:question) { FactoryGirl.create :question, title: "Want good food.", content: "I have raisins, celery and PB. What can I make?" }
   
   context "validations" do
     it { should validate_presence_of :title }
