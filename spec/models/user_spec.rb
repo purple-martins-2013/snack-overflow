@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe User do
-  let(:test_user) { User.create(username: 'seth', password_hash: 'seth', email:'seth@seth.com')}
-  it "should have a username" do
-    test_user.username.should eq 'seth'
+  let(:test_user) { FactoryGirl.create :user, :username => 'shadi' }
+
+  context "validations" do
+    it { should validate_uniqueness_of :username }
+    it { should validate_uniqueness_of :email }
+  end
+
+  context "username" do
+    it { should respond_to :username }
   end
 end
