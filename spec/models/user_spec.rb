@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:test_user) { FactoryGirl.create :user }
+  let(:test_user) { create :user }
 
   context "validations" do
     it { should validate_uniqueness_of :username }
@@ -25,9 +25,8 @@ describe User do
     it { should respond_to :password }
 
     it "should be encrypted in the database" do
-      user_password = 'password'
-      test_user.reload
-      test_user.password_digest.should_not eq user_password
+      user_password = attributes_for(:user)[:password]
+      expect(test_user.reload.password_digest).to_not eq user_password
     end
   end
 end
