@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:test_user) { User.create(username: 'seth', password_hash: 'seth', email:'seth@seth.com')}
+  it "should have a username" do
+    test_user.username.should eq 'seth'
+  end
 end
