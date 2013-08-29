@@ -8,4 +8,12 @@ describe UsersController do
     end
   end
 
+  describe "#show" do
+    it "assigns an @user" do
+      user = FactoryGirl.create(:user)
+      get :show, {id: user.id}
+      expect(assigns(:user)).to eq user
+    end
+  end
+
 end

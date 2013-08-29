@@ -1,0 +1,25 @@
+<h1><%= @user.username %>'s Profile</h1>
+
+<h2><%= @user.username %>'s Questions</h2>
+
+
+<% @user.questions.each do |question| %>
+
+<p> <%= link_to question.title, question_path(question) %>
+</p>
+
+<% end %>
+
+<h2><% @user.username %>'s Answers:</h2>
+
+<% @user.answers.each do |answer| %>
+
+<h4> <%= link_to answer.question.title, question_path(answer.question) %>
+</h4>
+
+<p>
+  <%= answer.shortened_content %>
+</p>
+
+<% end %>
+
