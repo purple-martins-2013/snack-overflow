@@ -15,8 +15,6 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    p "&" * 88
-    p params
     Question.create(params[:question])
     redirect_to root_path
   end
