@@ -26,8 +26,8 @@ feature 'Question Layouts' do
       visit new_question_path
       fill_in 'question_title',   with: "Hello world!"
       fill_in 'question_content', with: "Lorem ipsum dolor sit amet"
-      # click_button "Save Question" (breaks the code)
-
+      click_button "Save Question" 
+      # need to test if it's created still
     end
   end
   

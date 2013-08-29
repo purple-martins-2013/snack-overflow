@@ -9,16 +9,17 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    p "*" * 88
-    p params
-    Question.new(title: params[:title], content: params[:content])
+  #   p "*" * 88
+  #   p params
+  #   Question.new(title: params[:title], content: params[:content])
   end
 
-  # def create
-  #   p "&" * 88
-  #   p params
-  #   Question.create(title: params[:title], content: params[:content])
-  # end
+  def create
+    p "&" * 88
+    p params
+    Question.create(params[:question])
+    redirect_to root_path
+  end
 
 
 end
