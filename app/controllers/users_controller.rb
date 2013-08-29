@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(params)
+    User.create(params[:user])
     redirect_to root_path
   end
 
