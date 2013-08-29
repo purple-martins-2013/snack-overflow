@@ -1,0 +1,7 @@
+1. Users view which displays all their questions and answers. (Profile Page)
+2. Append Answers to the questions page.
+3. User can sign in
+4. Bootstrap or the like to beautify the app
+5. Ability to get to New Question form (In the nav bar, maybe with a few other shortcuts)
+6. Finish everything else and make it look pretty. Then we can take allll the credit. Muahahahahahah
+
