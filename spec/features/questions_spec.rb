@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Question Layouts' do 
   before do
-     question = Question.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these")
+     question = Question.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
   end
 
   let(:question) { question = FactoryGirl.create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?" }
