@@ -1,1 +1,8 @@
 <h1>Main page motherfucker</h1>
+  
+  <ul>
+    <% @questions.each do |question|%> 
+      <li><%= link_to "#{question.title}" %></li>
+    <% end %>
+  </ul>
+
