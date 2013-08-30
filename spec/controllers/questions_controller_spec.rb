@@ -28,9 +28,8 @@ describe QuestionsController do
   describe "#create" do
     it { should route(:post, '/questions').to(action: :create) }
 
-    it "should create a question" do 
-      post "create"
-      expect { Question.create(attributes_for :question) }.to change{ Question.all.length }.by(1)
+    it "should create a question" do
+      expect { post :create, { question: attributes_for(:question) } }.to change{Question.all.last}
     end
   end
 
