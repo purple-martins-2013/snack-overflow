@@ -27,7 +27,7 @@ feature 'visiting the sign up page' do
     fill_in 'password', with: 'password'
     click_button 'Save User'
     expect(page).to have_content 'Error'
-    expect(page).to have_content 'Log In'
+    expect(page).to have_content 'Login'
   end
 
 end
