@@ -3,7 +3,6 @@ require 'spec_helper'
 describe QuestionsController do
   let(:question) { FactoryGirl.create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these" }
   
-
   describe "#index" do
     it { should route(:get, '/').to(action: :index) }
   end
@@ -22,6 +21,5 @@ describe QuestionsController do
 
   describe "#destroy" do
     it { should route(:delete, '/questions/1').to(action: :destroy, id: 1) }
-  end
-  
+  end  
 end
