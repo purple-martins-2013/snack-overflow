@@ -6,7 +6,7 @@ FactoryGirl.define do
   end
 
   factory :answer do
-    sequence(:content) {|n| "Answer #{n}"}
+    sequence(:content) {|n| "Answer #{n}. Second line."}
   end
 
   factory :question do
