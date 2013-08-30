@@ -1,8 +1,9 @@
 <h1><%= @question.title %></h1>
 
 <p>Question: <%= @question.content %></p>
-
-<p>Answers:  <%= Answer.where(question_id: @question.id).pluck(:content).join("\n") %></p>
+<% if Answer.where(question_id: @question_id) %>  
+  <p>Answers:  <%= Answer.where(question_id: @question.id).pluck(:content).join("\n") %></p>
+<% end %>
 
 <div class='row'>
   <%= form_for @answer, html: {class: "large-4 columns"} do |f| %>
