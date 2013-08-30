@@ -32,11 +32,12 @@ feature 'Question Layouts' do
   end
 
   context "on question show page" do
-    it "creates a new answer" do
+    it "creates a new answer and displays it on the question show page" do
       visit questions_path
       click_link "#{question.title}"
       fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
       click_button "Create Answer"
+      page.should have_content "Lorem ipsum dolor sit amet"
     end
   end
   
