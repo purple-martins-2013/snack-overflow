@@ -10,5 +10,4 @@ describe AnswersController do
   describe "#destroy" do
     it { should route(:delete, '/answers/1').to(action: :destroy, id: 1) }
   end
-  
 end
