@@ -18,4 +18,8 @@ class QuestionsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    redirect_to user_path
+  end
+
 end
