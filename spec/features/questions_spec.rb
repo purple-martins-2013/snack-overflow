@@ -27,8 +27,21 @@ feature 'Question Layouts' do
       fill_in 'question_title',   with: "Hello world!"
       fill_in 'question_content', with: "Lorem ipsum dolor sit amet"
       click_button "Save Question" 
-      # need to test if it's created still
+      page.should have_content "Hello world!"
+    end
+  end
+
+  context "on question show page" do
+    it "creates a new answer and displays it on the question show page" do
+      visit questions_path
+      click_link "#{question.title}"
+      fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
+      click_button "Create Answer"
+      page.should have_content "Lorem ipsum dolor sit amet"
     end
   end
   
 end
+
+
+#create new answer.
