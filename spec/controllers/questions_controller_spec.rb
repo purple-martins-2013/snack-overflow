@@ -17,7 +17,7 @@ describe QuestionsController do
 
     it "should set variable to specific question" do
       get "show", { :id => question.id }
-      assigns(:questions).should_not be_nil
+      assigns(:question).should_not be_nil
     end
   end
 
