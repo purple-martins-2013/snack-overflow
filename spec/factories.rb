@@ -12,5 +12,6 @@ FactoryGirl.define do
   factory :question do
     sequence(:title) {|n| "Title #{n}"}
     sequence(:content) {|n| "Content #{n}"}
+    user_id 1
   end
 end

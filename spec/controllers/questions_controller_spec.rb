@@ -38,7 +38,8 @@ describe QuestionsController do
     it { should route(:delete, '/questions/1').to(action: :destroy, id: 1) }
 
     it "should destroy a question" do
-      expect { delete :destroy, :id => question.id }.should change{Question.all.length}.by(1)
+      delete :destroy, :id => question.id
+      Question.find_by_id(question.id).should be_nil
     end
   end  
 end

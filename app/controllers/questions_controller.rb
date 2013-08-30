@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    Question.find_by_id(params[:id]).destroy
     redirect_to user_path
   end
 
