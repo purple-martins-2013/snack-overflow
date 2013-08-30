@@ -27,7 +27,7 @@ feature 'Question Layouts' do
       fill_in 'question_title',   with: "Hello world!"
       fill_in 'question_content', with: "Lorem ipsum dolor sit amet"
       click_button "Save Question" 
-      # need to test if it's created still
+      page.should have_content "Hello world!"
     end
   end
   
