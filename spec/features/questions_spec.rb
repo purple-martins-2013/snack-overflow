@@ -30,5 +30,17 @@ feature 'Question Layouts' do
       page.should have_content "Hello world!"
     end
   end
+
+  context "on question show page" do
+    it "creates a new answer" do
+      visit questions_path
+      click_link "#{question.title}"
+      fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
+      click_button "Create Answer"
+    end
+  end
   
 end
+
+
+#create new answer.

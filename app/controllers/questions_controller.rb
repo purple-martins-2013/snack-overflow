@@ -5,13 +5,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
+    @answer = @question.answers.new
   end
 
   def new
-  #   p "*" * 88
-  #   p params
-  #   Question.new(title: params[:title], content: params[:content])
+
   end
 
   def create

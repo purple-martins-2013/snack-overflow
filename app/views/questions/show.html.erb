@@ -1,4 +1,12 @@
- 
-  <h1><%= @questions.title %></h1>
+<h1><%= @question.title %></h1>
 
-  <p><%= @questions.content %></p>
+<p><%= @question.content %></p>
+
+
+<div class='row'>
+  <%= form_for @answer, html: {class: "large-4 columns"} do |f| %>
+      Answer: <%= f.text_area :content %>
+      <%= f.hidden_field :question_id, { :value => @question.id} %>
+      <%= f.submit %>
+  <% end %>
+</div>
