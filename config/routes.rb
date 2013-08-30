@@ -5,6 +5,10 @@ SnackOverflow::Application.routes.draw do
   resources :users, only: [:show, :new, :create, :destroy]
   resources :questions, only: [:index, :show, :new, :create, :destroy]
   resources :answers, only: [:create, :destroy]
+
+  resources :sessions, only: [:create]
+  get 'sign_in' => 'sessions#new', :as => :sign_in
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
