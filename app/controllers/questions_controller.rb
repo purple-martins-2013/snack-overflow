@@ -9,9 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-  #   p "*" * 88
-  #   p params
-  #   Question.new(title: params[:title], content: params[:content])
+
   end
 
   def create
