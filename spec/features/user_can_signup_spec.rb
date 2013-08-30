@@ -17,7 +17,7 @@ feature 'visiting the sign up page' do
     fill_in 'user_email', with: 'capy@bara.com'
     fill_in 'password', with: 'password'
     click_button 'Save User'
-    expect(page).to have_content 'Main page'
+    expect(page).to have_content 'Logout'
   end
 
   it "displays the correct error message when a user is created without valid info" do
@@ -27,6 +27,7 @@ feature 'visiting the sign up page' do
     fill_in 'password', with: 'password'
     click_button 'Save User'
     expect(page).to have_content 'Error'
+    expect(page).to have_content 'Log In'
   end
 
 end
