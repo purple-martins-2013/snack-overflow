@@ -30,18 +30,25 @@
           </li>
         </ul>
 
-        <ul class='right'>
-
-          <% if current_user %>
-            <li class='name'><h1><%= link_to "Profile Page", user_path(current_user) %></h1></li>
-          <% else %>
-            <li class='name'><h1><%= link_to "Sign up", new_user_path %></h1></li>
-          <% end %>
-        </ul>
+        <section class="top-bar-section">
+          <ul class='right'>
+            <% if current_user %>
+              <li class='name'><h1><%= link_to "Profile Page", user_path(current_user) %></h1></li>
+              <li class='name'><h1><%= link_to "Logout", logout_path %></h1></li>
+            <% else %>
+              <li class='name'><h1><%= link_to "Sign up", new_user_path %></h1></li>
+              <li class='name'><h1><%= link_to "Login", sign_in_path %></h1></li>
+            <% end %>
+          </ul>
+        </section>
         <ul class='left'>
           <li class='name'><h1><%= link_to "New Question", new_question_path %></h1></li>
         </ul>
       </nav>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
