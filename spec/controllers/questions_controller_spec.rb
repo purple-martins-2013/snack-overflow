@@ -17,7 +17,7 @@ describe QuestionsController do
 
     it "should set variable to specific question" do
       get "show", { :id => question.id }
-      assigns(:questions).should_not be_nil
+      assigns(:question).should_not be_nil
     end
   end
 
@@ -28,9 +28,8 @@ describe QuestionsController do
   describe "#create" do
     it { should route(:post, '/questions').to(action: :create) }
 
-    it "should create a question" do 
-      post "create"
-      expect { Question.create(attributes_for :question) }.to change{ Question.all.length }.by(1)
+    it "should create a question" do
+      expect { post :create, { question: attributes_for(:question) } }.to change{Question.all.last}
     end
   end
 
@@ -38,7 +37,8 @@ describe QuestionsController do
     it { should route(:delete, '/questions/1').to(action: :destroy, id: 1) }
 
     it "should destroy a question" do
-      expect { delete :destroy, :id => question.id }.should change{Question.all.length}.by(1)
+      delete :destroy, :id => question.id
+      Question.find_by_id(question.id).should be_nil
     end
   end  
 end
