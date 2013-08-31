@@ -1,8 +1,6 @@
+<%= image_tag Gravatar.new(User.find(@question.user_id).email).image_url  %>
 <h1><%= @question.title %></h1>
 
-<% if current_user %>
-  <%= image_tag Gravatar.new(current_user.email).image_url  %>
-<% end %>
 <p>Question: <%= @question.content %></p>
 <% if Answer.where(question_id: @question_id) %>
   <ul>
