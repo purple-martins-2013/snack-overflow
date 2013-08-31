@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe AnswersController do
-  let(:answer) { FactoryGirl.create :answer }
-  let(:question) { FactoryGirl.create :question }
+  let(:answer) { create :answer }
+  let(:question) { create :question }
 
   describe "#create" do
     it { should route(:post, '/questions/1/answers').to(action: :create, question_id: 1) }
@@ -21,7 +21,7 @@ describe AnswersController do
 
     context "when I try to create an answer with complete params" do
       it "should redirect back to question page with answer posted" do
-        post :create, { answer: FactoryGirl.attributes_for(:answer), question_id: question.id }
+        post :create, { answer: attributes_for(:answer), question_id: question.id }
         expect(response).to redirect_to(question_path(question))
       end
 
@@ -32,7 +32,8 @@ describe AnswersController do
     it { should route(:delete, '/answers/1').to(action: :destroy, id: 1) }
 
     it "should destroy an answer" do
-      expect {delete :destroy, :id => answer.id }.to change{Answer.all.length}.by(1)
+      delete :destroy, :id => answer.id
+      Answer.find_by_id(answer.id).should be_nil
     end
   end
 end
