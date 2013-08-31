@@ -5,7 +5,11 @@
 <% end %>
 <p>Question: <%= @question.content %></p>
 <% if Answer.where(question_id: @question_id) %>
-  <p>Answers:  <%= Answer.where(question_id: @question.id).pluck(:content).join("\n") %></p>
+  <ul>
+    <% Answer.where(question_id: @question.id).each do |answer| %>
+      <li><%= answer.content %></li><br>
+    <% end %>
+  </ul>
 <% end %>
 
 <div class='row'>
