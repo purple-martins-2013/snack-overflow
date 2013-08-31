@@ -4,6 +4,8 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'gravatar-ultimate'
+
 
 group :test, :development do
   gem 'rspec-rails'
@@ -17,6 +19,8 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-spork'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 group :test do
