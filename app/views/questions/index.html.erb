@@ -2,6 +2,9 @@
   
   <ul>
     <% @questions.each do |question|%> 
-        <h3><li>Question: <%= link_to question.title, question_path(question)%></li></h3>
+      <% user = question.user_id %>
+        <% if user %>
+          <h3><li><%= image_tag Gravatar.new(User.find(user).email).image_url %>Question: <%= link_to question.title, question_path(question)%></li></h3>
+      <% end %> 
     <% end %>
   </ul>
