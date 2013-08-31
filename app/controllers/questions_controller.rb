@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    Question.create(params[:question])
+    Question.create(params[:question], user_id: current_user.id)
     redirect_to root_path
   end
 

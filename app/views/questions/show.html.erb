@@ -1,5 +1,7 @@
 <h1><%= @question.title %></h1>
 
+<%= image_tag Gravatar.new(current_user.email).image_url  %>
+
 <p>Question: <%= @question.content %></p>
 <% if Answer.where(question_id: @question_id) %>  
   <p>Answers:  <%= Answer.where(question_id: @question.id).pluck(:content).join("\n") %></p>
