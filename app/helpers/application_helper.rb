@@ -1,5 +1,6 @@
 module ApplicationHelper
   def current_user
-    User.last
+    return User.find(session[:user_id]) if session[:user_id]
+    nil
   end
 end
