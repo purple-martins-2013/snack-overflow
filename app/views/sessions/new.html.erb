@@ -1,8 +1,8 @@
 <div class='row'>
-  <%= form_for @user, html: {class: "large-4 columns"} do |f| %>
+  <%= form_for :session, url: {action: 'create'}, html: {class: "large-4 columns"} do |f| %>
     username: <%= f.text_field :username %>
-    password: <%= password_field_tag(:password) %>
+    password: <%= f.password_field(:password) %>
 
-    <%= f.submit %>
+    <%= f.submit "Login" %>
   <% end %>
 </div>

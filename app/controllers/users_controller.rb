@@ -5,8 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(params[:user])
-    redirect_to root_path
+    user = User.create(params[:user])
+    if user.errors.messages.empty?
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      flash[:notice] = 'Error signing up'
+      redirect_to new_user_path
+    end
   end
 
   def show

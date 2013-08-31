@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'user sessions' do
   before do
-    @user = FactoryGirl.create(:user, username: 'loginuser', password: 'password')
+    @user = FactoryGirl.create(:user)
   end
 
   it "successfully displays the login form" do
@@ -12,8 +12,8 @@ feature 'user sessions' do
 
   it "successfully signs in a user with valid info" do
     visit sign_in_path
-    fill_in 'username', with: 'loginuser'
-    fill_in 'password', with: 'password'
+    fill_in 'session_username', with: @user.username
+    fill_in 'session_password', with: 'password'
     click_button 'Login'
     expect(page).to have_content 'Logout'
     expect(page).to have_content 'Success'
@@ -21,14 +21,18 @@ feature 'user sessions' do
 
   it "displays error message when user is logged in with invalid info" do
     visit sign_in_path
-    fill_in 'username', with: 'notvalid'
-    fill_in 'password', with: 'password'
+    fill_in 'session_username', with: 'notvalid'
+    fill_in 'session_password', with: 'password'
     click_button 'Login'
     expect(page).to have_content 'Login'
     expect(page).to have_content 'Error'
   end
 
   it "successfully logs out the user" do
+    visit sign_in_path
+    fill_in 'session_username', with: @user.username
+    fill_in 'session_password', with: 'password'
+    click_button 'Login'
     visit root_path
     click_link('Logout')
     expect(page).to have_content 'Logged out successfully'

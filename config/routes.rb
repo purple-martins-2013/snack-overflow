@@ -8,5 +8,6 @@ SnackOverflow::Application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   get 'sign_in' => 'sessions#new', :as => :sign_in
+  get 'logout' => 'sessions#destroy', :as => :logout
 
 end

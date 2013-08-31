@@ -15,8 +15,8 @@ feature 'visiting the sign up page' do
     visit new_user_path
     fill_in 'user_username', with: "Capy"
     fill_in 'user_email', with: 'capy@bara.com'
-    fill_in 'password', with: 'password'
-    click_button 'Save User'
+    fill_in 'user_password', with: 'password'
+    click_button 'Create User'
     expect(page).to have_content 'Logout'
   end
 
@@ -24,8 +24,8 @@ feature 'visiting the sign up page' do
     visit new_user_path
     fill_in 'user_username', with: "Bara"
     fill_in 'user_email', with: 'invalid@email'
-    fill_in 'password', with: 'password'
-    click_button 'Save User'
+    fill_in 'user_password', with: 'password'
+    click_button 'Create User'
     expect(page).to have_content 'Error'
     expect(page).to have_content 'Login'
   end
