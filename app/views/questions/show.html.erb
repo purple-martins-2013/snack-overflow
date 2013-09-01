@@ -1,4 +1,4 @@
-<%= image_tag Gravatar.new(User.find(@question.user_id).email).image_url  %>
+<%= image_tag gravatar_for(User.find(@question.user_id))  %>
 <h1><%= @question.title %></h1>
 
 <p>Question: <%= @question.content %></p>

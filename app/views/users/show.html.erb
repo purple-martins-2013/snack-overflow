@@ -1,4 +1,4 @@
-<%= image_tag Gravatar.new(User.find(@user.id).email).image_url  %>
+<%= image_tag gravatar_for(@user) %>
 
 <h1><%= @user.username %>'s Profile</h1>
 
