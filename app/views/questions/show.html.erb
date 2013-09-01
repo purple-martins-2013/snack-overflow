@@ -10,7 +10,8 @@
 <% if Answer.where(question_id: @question_id) %>
   <ul>
     <% Answer.where(question_id: @question.id).each do |answer| %>
-      <li><%= answer.content %></li><br>
+      <li><%= answer.content %> | <%= link_to 'Delete', answer_path(answer),
+                  method: :delete, data: { confirm: 'Are you sure?' } %></li><br>
     <% end %>
   </ul>
 <% end %>
