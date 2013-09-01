@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe QuestionsController do
   let(:question) { FactoryGirl.create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these" }
+  let(:user) { FactoryGirl.create :user }
   
   describe "#index" do
     it { should route(:get, '/').to(action: :index) }
@@ -29,6 +30,7 @@ describe QuestionsController do
     it { should route(:post, '/questions').to(action: :create) }
 
     it "should create a question" do
+      session[:user_id] = user.id
       expect { post :create, { question: attributes_for(:question) } }.to change{Question.all.last}
     end
   end

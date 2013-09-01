@@ -7,7 +7,9 @@
     <p class="title" data-section-title><a href="#panel1">Questions</a></p>
       <div class="content" data-section-content>
         <p><% @user.questions.each do |question| %>
-          <p><%= link_to question.title, question_path(question) %></p>
+          <p><%= link_to question.title, question_path(question) %>
+          | <%= link_to 'Delete', question_path(question),
+                  method: :delete, data: { confirm: 'Are you sure?' } %></p>
         <% end %>
       </p>
     </div>

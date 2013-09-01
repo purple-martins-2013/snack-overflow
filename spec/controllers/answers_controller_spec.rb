@@ -21,7 +21,7 @@ describe AnswersController do
 
     context "when I try to create an answer with complete params" do
       it "should redirect back to question page with answer posted" do
-        post :create, { answer: attributes_for(:answer), question_id: question.id }
+        post :create, { answer: attributes_for(:answer), question_id: question.id}
         expect(response).to redirect_to(question_path(question))
       end
 
