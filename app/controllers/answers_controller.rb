@@ -1,5 +1,7 @@
 class AnswersController < ApplicationController
 
+  before_filter :logged_in?, only: :create
+
   def create
     @question = Question.find(params[:question_id])
     @answer = Answer.create(params[:answer])
