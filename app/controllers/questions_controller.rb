@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = @question.answers.new
+    @answers = @question.answers.select{|e|e.id}
   end
 
   def new
