@@ -1,8 +1,10 @@
 require 'spec_helper'
 
-feature 'Question Layouts' do 
+feature 'Question Layouts' do
+  let(:user) { FactoryGirl.create :user }
+
   before do
-     question = Question.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
+     question = user.questions.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
   end
 
   let(:question) { question = FactoryGirl.create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?" }
@@ -23,6 +25,7 @@ feature 'Question Layouts' do
 
   context "on create question form" do
     it "creates a new question" do
+      sign_in(user)
       visit new_question_path
       fill_in 'question_title',   with: "Hello world!"
       fill_in 'question_content', with: "Lorem ipsum dolor sit amet"
