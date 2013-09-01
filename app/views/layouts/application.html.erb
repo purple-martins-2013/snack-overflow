@@ -49,7 +49,11 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>
-      <%= yield %>
+      <div class="row">
+        <div class="large-9 columns">
+          <%= yield %> 
+        </div>
+      </div>
     </div>
   </body>
 </html>
