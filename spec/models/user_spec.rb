@@ -3,6 +3,11 @@ require 'spec_helper'
 describe User do
   let(:test_user) { create :user }
 
+  context "associations" do 
+    it { should have_many :questions }
+    it { should have_many :answers }
+  end
+
   context "validations" do
     it { should validate_uniqueness_of :username }
     it { should validate_presence_of :username }
