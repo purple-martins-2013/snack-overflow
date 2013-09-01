@@ -36,6 +36,7 @@ feature 'Question Layouts' do
 
   context "on question show page" do
     it "creates a new answer and displays it on the question show page" do
+      sign_in(user)
       visit questions_path
       click_link "#{question.title}"
       fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
