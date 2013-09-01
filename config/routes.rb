@@ -4,7 +4,12 @@ SnackOverflow::Application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :destroy]
   resources :questions, only: [:index, :show, :new, :create, :destroy] do
-    resources :answers, only: [:create]
+    resources :answers, only: [:create, :show] do
+      member do
+        put 'increment'
+        put 'decrement'
+      end
+    end
   end
   resources :answers, only: [:destroy]
 
