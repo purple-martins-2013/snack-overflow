@@ -51,7 +51,12 @@ Spork.each_run do
 
 end
 
-
+def sign_in(user)
+  visit sign_in_path
+  fill_in 'session_username', with: user.username
+  fill_in 'session_password', with: user.password
+  click_button 'Login'
+end
 
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
