@@ -2,6 +2,11 @@
 <h1><%= @question.title %></h1>
 
 <p>Question: <%= @question.content %></p>
+<% if current_user && current_user.id == @question.user_id %>
+  <p><%= link_to 'Delete', question_path(@question),
+                  method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
 <% if Answer.where(question_id: @question_id) %>
   <ul>
     <% Answer.where(question_id: @question.id).each do |answer| %>
