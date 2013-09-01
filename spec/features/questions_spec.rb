@@ -4,7 +4,7 @@ feature 'Question Layouts' do
   let(:user) { FactoryGirl.create :user }
 
   before do
-     question = user.questions.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
+     user.questions.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
   end
 
   let(:question) { question = FactoryGirl.create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?" }
@@ -35,15 +35,34 @@ feature 'Question Layouts' do
   end
 
   context "on question show page" do
-    it "creates a new answer and displays it on the question show page" do
-      visit questions_path
-      click_link "#{question.title}"
-      fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
-      click_button "Create Answer"
-      page.should have_content "Lorem ipsum dolor sit amet"
+    context "after creating a new answer" do
+      before do
+        sign_in(user)
+        visit questions_path
+        click_link "#{question.title}"
+        fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
+        click_button "Create Answer"
+      end
+      
+      it "should have the correct answer title" do
+        page.should have_content "Lorem ipsum dolor sit amet"
+      end
+
+      it "should have the correct answer score" do
+        page.should have_content "Score: 0"
+      end
+
+      context "after upvoting the answer" do
+        before do
+          click_link "upvote"
+        end
+
+        it "should increment the answer score" do
+          page.should have_content "Score: 1"
+        end
+      end
     end
-  end
-  
+  end  
 end
 
 
