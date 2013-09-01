@@ -5,13 +5,15 @@ FactoryGirl.define do
     password 'password'
   end
 
-  factory :answer do
-    sequence(:content) {|n| "Answer #{n}. Second line."}
-  end
-
   factory :question do
     sequence(:title) {|n| "Title #{n}"}
     sequence(:content) {|n| "Content #{n}"}
+    user
+  end
+
+  factory :answer do
+    sequence(:content) {|n| "Answer #{n}. Second line."}
+    question
     user
   end
 end
