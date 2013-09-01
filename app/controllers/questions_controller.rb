@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+  before_filter :logged_in?, only: :create
+
   def index
     @questions = Question.all
   end
@@ -15,8 +17,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    current_user.questions.create(params[:question])
-    redirect_to root_path
+    @question = current_user.questions.create(params[:question])
+    redirect_to question_path(@question)
   end
 
   def destroy
