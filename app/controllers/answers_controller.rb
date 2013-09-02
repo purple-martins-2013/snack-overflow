@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
-    @answer = Answer.create(params[:answer])
+    @answer = current_user.answers.create(params[:answer])
     if @answer.persisted?
       redirect_to question_path(@question)
     else
