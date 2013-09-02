@@ -8,7 +8,7 @@
           <div class="large-12 columns"><%= link_to 'downvote', decrement_question_answer_path(answer.question, answer), method: :put %></div>
         </div>
       </div>
-      <div class="large-10 columns"><h3><%= answer.content %></h3>
+      <div class="large-10 columns"><h3><%= image_tag gravatar_for(User.find(@question.user_id)) %><%= answer.content %></h3>
         <% if current_user && current_user.id == answer.user_id %>
           <%= link_to 'Delete', answer_path(answer),method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
