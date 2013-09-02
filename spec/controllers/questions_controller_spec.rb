@@ -30,9 +30,25 @@ describe QuestionsController do
     it { should route(:post, '/questions').to(action: :create) }
 
     context "when user is logged in" do
-      it "should create a question" do
+      before do
         session[:user_id] = user.id
-        expect { post :create, { question: attributes_for(:question) } }.to change{Question.all.last}
+      end
+
+      context "with title and content filled" do
+        it "should create a question" do
+          expect { post :create, { question: attributes_for(:question) } }.to change{Question.all.last}
+        end
+      end
+
+      context "when form is not filled out" do
+        it "should not create a question" do
+          expect { post :create, { } }.not_to change{Question.all.last}
+        end
+
+        it "should raise an error" do
+          post :create, { content: {} }
+          expect(response.status).to eq 422
+        end
       end
     end
 
