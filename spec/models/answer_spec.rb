@@ -19,6 +19,16 @@ describe Answer do
     it "should have the correct default value" do
       test_answer.score.should eq 0
     end
+
+    it "should increment the score" do
+      test_answer.upvote!
+      test_answer.score.should eq 1
+    end
+
+    it "should decrement the score" do
+      test_answer.downvote!
+      test_answer.score.should eq -1
+    end
   end
 
   describe "shortened_content" do
