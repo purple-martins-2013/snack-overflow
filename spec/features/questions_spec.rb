@@ -69,8 +69,22 @@ feature 'Question Layouts' do
         end
       end
     end
-  end  
+  end
+
+  context "should display number of answers for each question" do
+    it "should display zero answers" do
+      visit questions_path
+      page.should have_content "Answers: 0"
+    end
+
+    it "can add an answer and the number will increment" do
+      sign_in(user)
+      visit questions_path
+      click_link @question.title
+      fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
+      click_button "Create Answer"
+      visit questions_path
+      page.should have_content "Answers: 1"
+    end
+  end
 end
-
-
-#create new answer.
