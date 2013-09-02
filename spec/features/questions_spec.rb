@@ -56,6 +56,16 @@ feature 'Question Layouts' do
           page.should have_content "Score: 1"
         end
       end
+
+      context "after downvoting the answer" do
+        before do
+          click_link "downvote"
+        end
+
+        it "should decrement the answer score" do
+          page.should have_content "Score: -1"
+        end
+      end
     end
   end  
 end

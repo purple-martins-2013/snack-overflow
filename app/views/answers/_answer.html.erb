@@ -5,7 +5,7 @@
         <div class="row">
           <div class="large-12 columns"><%= link_to 'upvote', increment_question_answer_path(answer.question, answer), method: :put %></div>
           <div class="large-12 columns">Score: <%= answer.score %></div>
-          <div class="large-12 columns"></div>
+          <div class="large-12 columns"><%= link_to 'downvote', decrement_question_answer_path(answer.question, answer), method: :put %></div>
         </div>
       </div>
       <div class="large-10 columns"><h3><%= answer.content %></h3></div>

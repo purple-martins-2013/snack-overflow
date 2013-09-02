@@ -49,6 +49,15 @@ describe AnswersController do
     end
   end
 
+  describe "#decrement" do
+    it { should route(:put, '/questions/1/answers/1/decrement').to(action: :decrement, question_id: 1, id: 1) }
+
+    it "should update the score of an answer" do
+      put :decrement, { question_id: question.id, id: answer.id }
+      Answer.find_by_id(answer.id).score.should eq(-1)
+    end
+  end
+
   describe "#destroy" do
     it { should route(:delete, '/answers/1').to(action: :destroy, id: 1) }
 
