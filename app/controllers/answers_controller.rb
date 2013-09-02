@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+  include AnswerHelper
   before_filter :logged_in?, only: :create
 
   def create
