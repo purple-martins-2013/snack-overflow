@@ -19,7 +19,7 @@
         <div class="content" data-section-content>
           <p><% @user.answers.each do |answer| %>
             <h4> <%= link_to answer.question.title, question_path(answer.question) %></h4>
-            <p><%= answer.shortened_content %></p>
+            <p><%= answer.shortened_content %> | <%= link_to 'Delete', answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' } %></p>
         <% end %>
       </p>
     </div>
