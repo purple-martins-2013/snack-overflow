@@ -4,7 +4,7 @@
     <% @questions.each do |question|%> 
       <% user = question.user_id %>
         <% if user %>
-          <h3><li><%= image_tag gravatar_for(User.find(user)) %>Question: <%= link_to question.title, question_path(question)%></li></h3>
+          <h3><li><%= image_tag gravatar_for(User.find(user)) %>Question: <%= link_to question.title, question_path(question)%>Answers: <%= num_answers_for_question(question.id) %></li></h3>
       <% end %> 
     <% end %>
   </ul>
