@@ -12,13 +12,13 @@ class AnswersController < ApplicationController
 
   def increment
     answer = Answer.find(params[:id])
-    answer.update_attributes(score: answer.score + 1)
+    answer.upvote!
     redirect_to question_path(params[:question_id])
   end
 
   def decrement
     answer = Answer.find(params[:id])
-    answer.update_attributes(score: answer.score - 1)
+    answer.downvote!
     redirect_to question_path(params[:question_id])
   end
 
