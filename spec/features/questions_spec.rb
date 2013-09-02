@@ -74,7 +74,7 @@ feature 'Question Layouts' do
   context "should display number of answers for each question" do
     it "should display zero answers" do
       visit questions_path
-      page.should have_content "Answers: 0"
+      page.should have_content "0"
     end
 
     it "can add an answer and the number will increment" do
@@ -84,7 +84,7 @@ feature 'Question Layouts' do
       fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
       click_button "Create Answer"
       visit questions_path
-      page.should have_content "Answers: 1"
+      page.should have_content "1"
     end
   end
 end

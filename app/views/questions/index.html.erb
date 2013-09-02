@@ -1,10 +1,26 @@
-<h1>Main page motherfucker</h1>
-  
-  <ul>
-    <% @questions.each do |question|%> 
+<div class="panel callout">
+  <h1>Welcome to SnackOverflow!</h1>
+  <p>The number 1 snack site since today.</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th width="40%">User</th>
+      <th width="40%">Question</th>
+      <th width="20%">Number of Answers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %> 
       <% user = question.user_id %>
-        <% if user %>
-          <h3><li><%= image_tag gravatar_for(User.find(user)) %>Question: <%= link_to question.title, question_path(question)%>Answers: <%= num_answers_for_question(question.id) %></li></h3>
+      <% if user %>
+        <tr>
+          <td><%= image_tag gravatar_for(User.find(user)) %></td>
+          <h3><td><%= link_to question.title, question_path(question)%></td></h3>
+          <td><%= num_answers_for_question(question.id) %></td>
+        </tr>
       <% end %> 
     <% end %>
-  </ul>
+  </tbody>
+</table>

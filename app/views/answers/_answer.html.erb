@@ -1,18 +1,10 @@
-<div class="row">
-  <div class="large-12 columns" style="border: 1px solid black">
-    <div class="row">
-      <div class="large-2 columns">
-        <div class="row">
-          <div class="large-12 columns"><%= link_to 'upvote', increment_question_answer_path(answer.question, answer), method: :put %></div>
-          <div class="large-12 columns">Score: <%= answer.score %></div>
-          <div class="large-12 columns"><%= link_to 'downvote', decrement_question_answer_path(answer.question, answer), method: :put %></div>
-        </div>
-      </div>
-      <div class="large-10 columns"><h3><%= image_tag gravatar_for(User.find(@question.user_id)) %><%= answer.content %></h3>
-        <% if current_user && current_user.id == answer.user_id %>
-          <%= link_to 'Delete', answer_path(answer),method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </div>
-    </div>
-  </div>
-</div>
+<tr>
+  <td><%= link_to 'upvote', increment_question_answer_path(answer.question, answer), method: :put %></td>
+  <td><%= link_to 'downvote', decrement_question_answer_path(answer.question, answer), method: :put %></td>
+  <td>Score: <%= answer.score %></td>
+  <h3><td><%= image_tag gravatar_for(User.find(@question.user_id)) %></td></h3>
+  <td><%= answer.content %></td>
+  <% if current_user && current_user.id == answer.user_id %>
+  <td><%= link_to 'Delete', answer_path(answer),method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</tr>
