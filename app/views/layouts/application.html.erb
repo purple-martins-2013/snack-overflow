@@ -42,7 +42,9 @@
           </ul>
         </section>
         <ul class='left'>
-          <li class='name'><h1><%= link_to "New Question", new_question_path %></h1></li>
+          <% if current_user %>
+            <li class='name'><h1><%= link_to "New Question", new_question_path %></h1></li>
+          <% end %>
         </ul>
       </nav>
       <% if ! flash.empty? %>
