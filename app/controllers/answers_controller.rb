@@ -1,8 +1,10 @@
 class AnswersController < ApplicationController
 
+  before_filter :logged_in?, only: :create
+
   def create
     @question = Question.find(params[:question_id])
-    @answer = Answer.create(params[:answer])
+    @answer = current_user.answers.create(params[:answer])
     if @answer.persisted?
       redirect_to question_path(@question)
     else
@@ -26,6 +28,4 @@ class AnswersController < ApplicationController
     Answer.find_by_id(params[:id]).destroy
     redirect_to root_path
   end
-
-
 end
