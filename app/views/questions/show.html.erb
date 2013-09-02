@@ -11,6 +11,7 @@
   <%= render @answers %>
 <% end %>
 
+<% if current_user %>
 <div class='row'>
   <%= form_for [@question, @answer], html: {class: "large-4 columns"} do |f| %>
       Answer: <%= f.text_area :content %>
@@ -18,3 +19,4 @@
       <%= f.submit %>
   <% end %>
 </div>
+<% end %>
