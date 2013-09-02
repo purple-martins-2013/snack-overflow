@@ -45,13 +45,16 @@
           <li class='name'><h1><%= link_to "New Question", new_question_path %></h1></li>
         </ul>
       </nav>
-
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
+      <% if ! flash.empty? %>
+      <div data-alert class="alert-box">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: name %>
+        <% end %>
+      </div>
       <% end %>
       <div class="row">
         <div class="large-9 columns">
-          <%= yield %> 
+          <%= yield %>
         </div>
       </div>
     </div>
