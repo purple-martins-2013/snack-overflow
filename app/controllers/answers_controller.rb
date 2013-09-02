@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     if @answer.persisted?
       redirect_to question_path(@question)
     else
+      flash[:notice] = 'Error: Answer not valid'
       render "questions/show", status: :unprocessable_entity
     end
   end
