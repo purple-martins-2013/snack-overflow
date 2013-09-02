@@ -18,7 +18,12 @@ class QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.create(params[:question])
-    redirect_to question_path(@question)
+    if @question.persisted?
+      redirect_to question_path(@question)
+    else
+      flash[:notice] = 'Error: Question must have title and content'
+      render new_question_path, status: :unprocessable_entity
+    end
   end
 
   def destroy
