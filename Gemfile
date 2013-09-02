@@ -12,6 +12,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'simplecov'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
 end
 
