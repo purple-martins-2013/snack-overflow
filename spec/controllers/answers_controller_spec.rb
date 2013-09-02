@@ -54,7 +54,7 @@ describe AnswersController do
 
     it "should update the score of an answer" do
       put :decrement, { question_id: question.id, id: answer.id }
-      Answer.find_by_id(answer.id).score.should eq(-1)
+      Answer.find_by_id(answer.id).score.should eq -1
     end
   end
 

@@ -4,20 +4,20 @@ feature 'Question Layouts' do
   let(:user) { FactoryGirl.create :user }
 
   before do
-     @question = FactoryGirl.create(:question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?", user: user)
+     @question = FactoryGirl.create(:question, user: user)
   end
 
   context "on welcome page" do 
 
     it "can see a title of a question on the homepage" do 
       visit questions_path
-      page.should have_content "Pizza, Ricotta, Bourbon"
+      page.should have_content @question.title
     end
 
     it "can click the title and see the full content" do
       visit questions_path
-      click_link "#{@question.title}"
-      page.should have_content "Any clue what I can make with these?"
+      click_link @question.title
+      page.should have_content @question.content
     end
   end
 
@@ -37,7 +37,7 @@ feature 'Question Layouts' do
       before do
         sign_in(user)
         visit questions_path
-        click_link "#{@question.title}"
+        click_link @question.title
         fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
         click_button "Create Answer"
       end

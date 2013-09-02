@@ -27,7 +27,7 @@ describe Answer do
 
     it "should decrement the score" do
       test_answer.downvote!
-      test_answer.score.should eq(-1)
+      test_answer.score.should eq -1
     end
   end
 

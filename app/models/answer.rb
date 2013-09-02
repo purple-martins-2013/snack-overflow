@@ -14,13 +14,11 @@ class Answer < ActiveRecord::Base
   end
 
   def upvote!
-    self.score = self.score + 1
-    self.save
+    self.update_attributes(score: self.score + 1)
   end
 
   def downvote!
-    self.score = self.score - 1
-    self.save
+    self.update_attributes(score: self.score - 1)
   end
 
 end
