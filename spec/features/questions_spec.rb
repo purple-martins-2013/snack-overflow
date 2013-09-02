@@ -4,7 +4,7 @@ feature 'Question Layouts' do
   let(:user) { FactoryGirl.create :user }
 
   before do
-     user.questions.create(title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?")
+     @question = FactoryGirl.create(:question, user: user)
   end
 
   let(:question) { create :question, title: "Pizza, Ricotta, Bourbon", content: "Any clue what I can make with these?" }
@@ -13,13 +13,13 @@ feature 'Question Layouts' do
 
     it "can see a title of a question on the homepage" do
       visit questions_path
-      page.should have_content "Pizza, Ricotta, Bourbon"
+      page.should have_content @question.title
     end
 
     it "can click the title and see the full content" do
       visit questions_path
-      click_link "#{question.title}"
-      expect(page).to have_content question.title
+      click_link @question.title
+      page.should have_content @question.content
     end
   end
 
@@ -39,16 +39,13 @@ feature 'Question Layouts' do
       before do
         sign_in(user)
         visit questions_path
-        click_link "#{question.title}"
+        click_link @question.title
         fill_in 'answer_content', with: "Lorem ipsum dolor sit amet"
         click_button "Create Answer"
       end
       
-      it "should have the correct answer title" do
+      it "should have the correct answer title and score" do
         page.should have_content "Lorem ipsum dolor sit amet"
-      end
-
-      it "should have the correct answer score" do
         page.should have_content "Score: 0"
       end
 
@@ -59,6 +56,16 @@ feature 'Question Layouts' do
 
         it "should increment the answer score" do
           page.should have_content "Score: 1"
+        end
+      end
+
+      context "after downvoting the answer" do
+        before do
+          click_link "downvote"
+        end
+
+        it "should decrement the answer score" do
+          page.should have_content "Score: -1"
         end
       end
     end

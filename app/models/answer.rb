@@ -13,4 +13,12 @@ class Answer < ActiveRecord::Base
     content.split('.').first + "..."
   end
 
+  def upvote!
+    self.update_attributes(score: self.score + 1)
+  end
+
+  def downvote!
+    self.update_attributes(score: self.score - 1)
+  end
+
 end
