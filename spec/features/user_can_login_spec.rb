@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 feature 'user sessions' do
-  before do
-    @user = FactoryGirl.create(:user)
-  end
+  let!(:user) { create(:user) }
 
   it "successfully displays the login form" do
     visit sign_in_path
@@ -11,8 +9,9 @@ feature 'user sessions' do
   end
 
   it "successfully signs in a user with valid info" do
+    # REVIEW: user helper method
     visit sign_in_path
-    fill_in 'session_username', with: @user.username
+    fill_in 'session_username', with: user.username
     fill_in 'session_password', with: 'password'
     click_button 'Login'
     expect(page).to have_content 'Logout'
@@ -30,7 +29,7 @@ feature 'user sessions' do
 
   it "successfully logs out the user" do
     visit sign_in_path
-    fill_in 'session_username', with: @user.username
+    fill_in 'session_username', with: user.username
     fill_in 'session_password', with: 'password'
     click_button 'Login'
     visit root_path

@@ -1,3 +1,4 @@
+REVIEW: divide in partials
 <%= image_tag gravatar_for(@user) %>
 
 <h1><%= @user.username %>'s Profile</h1>
@@ -6,6 +7,7 @@
   <section>
     <p class="title" data-section-title><a href="#panel1">Questions</a></p>
       <div class="content" data-section-content>
+        REVIEW: move to a helper
         <p><% @user.questions.each do |question| %>
           <p><%= link_to question.title, question_path(question) %>
           | <%= link_to 'Delete', question_path(question),
@@ -17,6 +19,7 @@
   <section>
       <p class="title" data-section-title><a href="#panel2">Answers</a></p>
         <div class="content" data-section-content>
+          REVIEW: move to a helper
           <p><% @user.answers.each do |answer| %>
             <h4> <%= link_to answer.question.title, question_path(answer.question) %></h4>
             <p><%= answer.shortened_content %> | <%= link_to 'Delete', answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' } %></p>

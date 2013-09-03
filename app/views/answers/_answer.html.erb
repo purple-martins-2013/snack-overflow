@@ -2,7 +2,7 @@
   <td><%= link_to 'upvote', increment_question_answer_path(answer.question, answer), method: :put %></td>
   <td><%= link_to 'downvote', decrement_question_answer_path(answer.question, answer), method: :put %></td>
   <td>Score: <%= answer.score %></td>
-  <h3><td><%= image_tag gravatar_for(User.find(answer.user_id)) %></td></h3>
+  <h3><td><%= image_tag answer.user.gravatar %></td></h3>
   <td><%= answer.content %></td>
   <% if current_user && current_user.id == answer.user_id %>
   <td><%= link_to 'Delete', answer_path(answer),method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,3 @@
-
-
 require 'spork'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -53,13 +51,6 @@ Spork.each_run do
   # This code will be run each time you run your specs.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-end
-
-def sign_in(user)
-  visit sign_in_path
-  fill_in 'session_username', with: user.username
-  fill_in 'session_password', with: user.password
-  click_button 'Login'
 end
 
 

@@ -12,15 +12,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @questions.each do |question| %> 
+    <% @questions.each do |question| %>
       <% user = question.user_id %>
       <% if user %>
         <tr>
-          <td><%= image_tag gravatar_for(User.find(user)) %></td>
+          <td><%= image_tag user.gravatar %></td>
           <h3><td><%= link_to question.title, question_path(question)%></td></h3>
-          <td><%= num_answers_for_question(question.id) %></td>
+          <td><%= question.number_of_answers %></td>
         </tr>
-      <% end %> 
+      <% end %>
     <% end %>
   </tbody>
 </table>

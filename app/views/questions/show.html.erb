@@ -2,7 +2,7 @@
 <h1><%= @question.title %></h1>
 
 <p>Question: <%= @question.content %></p>
-<% if current_user && current_user.id == @question.user_id %>
+<% if current_user && @question.owner? current_user %>
   <p><%= link_to 'Delete', question_path(@question),
                   method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
@@ -28,6 +28,7 @@
 <% if current_user %>
 <div class='row'>
   <%= form_for [@question, @answer], html: {class: "large-4 columns"} do |f| %>
+    <%= render 'shared/form_errors', :object => @answer %>
       Answer: <%= f.text_area :content %>
       <%= f.hidden_field :question_id, { :value => @question.id} %>
       <%= f.submit %>

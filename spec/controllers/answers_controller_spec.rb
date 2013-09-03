@@ -33,8 +33,11 @@ describe AnswersController do
     end
 
     context "when not logged in" do
+      before(:each) do
+        # create a test module and create a method that deletes the user session session.delete(:user_id)
+        logout_user
+      end
       it "should not create an answer" do
-        session[:user_id] = nil
         expect { post :create, { answer: attributes_for(:answer), question_id: question.id } }.not_to change{Answer.count}
       end
     end

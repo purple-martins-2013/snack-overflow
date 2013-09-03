@@ -21,8 +21,7 @@ class QuestionsController < ApplicationController
     if @question.persisted?
       redirect_to question_path(@question)
     else
-      flash[:notice] = 'Error: Question must have title and content'
-      render new_question_path, status: :unprocessable_entity
+      render :new # make sure that the error partial is included in the new view
     end
   end
 

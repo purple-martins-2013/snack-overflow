@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   let(:test_user) { create :user }
 
-  context "associations" do 
+  context "associations" do
     it { should have_many :questions }
     it { should have_many :answers }
   end
@@ -18,16 +18,7 @@ describe User do
     it { should validate_presence_of :password }
   end
 
-  context "username" do
-    it { should respond_to :username }
-  end
-
-  context "email" do
-    it { should respond_to :email }
-  end
-
   context "password" do
-    it { should respond_to :password }
 
     it "should be encrypted in the database" do
       user_password = attributes_for(:user)[:password]

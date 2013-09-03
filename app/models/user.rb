@@ -7,5 +7,11 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true, format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }
+  #REVIEW: has_secure_password already validates presence of password, look at the code(https://github.com/rails/rails/blob/b965ce361b89ad33a4a4b422f8e564233926c723/activemodel/lib/active_model/secure_password.rb#L42)
   validates :password, presence: true
+
+  def gravatar
+    Gravatar.new(self.email).image_url
+  end
 end
+

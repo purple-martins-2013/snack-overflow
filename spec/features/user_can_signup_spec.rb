@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'visiting the sign up page' do
-
+  # REVIEW: user let(:user), it's preferred
   before do
     @user = FactoryGirl.create(:user)
   end
@@ -26,6 +26,7 @@ feature 'visiting the sign up page' do
     fill_in 'user_email', with: 'invalid@email'
     fill_in 'user_password', with: 'password'
     click_button 'Create User'
+    # REVIEW: don't just look for Error, which errors are you looking for?
     expect(page).to have_content 'Error'
     expect(page).to have_content 'Login'
   end

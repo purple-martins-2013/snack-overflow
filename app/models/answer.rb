@@ -2,8 +2,8 @@ class Answer < ActiveRecord::Base
   attr_accessible :content, :score, :question_id
 
   validates :content, presence: true
-  
 
+  DEFAULT_SCORE = 0
   before_create { self.score = 0 }
 
   belongs_to :user
